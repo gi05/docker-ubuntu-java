@@ -1,5 +1,7 @@
 FROM otechlabs/base:latest
 
+MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
+
 # Java Version
 ENV JAVA_VERSION_MAJOR 8
 ENV JAVA_VERSION_MINOR 31
