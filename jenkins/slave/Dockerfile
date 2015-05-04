@@ -1,4 +1,4 @@
-FROM oberthur/docker-ubuntu-java:jdk8_8.45.14
+FROM oberthur/docker-ubuntu-java:jdk8_8.45.14	
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
@@ -11,7 +11,7 @@ WORKDIR /opt/jenkins-slave
 
 RUN mkdir -p /opt/jenkins-slave \
     && curl -o /opt/jenkins-slave/swarm-client-$SWARM_VERSION-jar-with-dependencies.jar http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/$SWARM_VERSION/swarm-client-$SWARM_VERSION-jar-with-dependencies.jar \
-    && echo '#!/bin/bash -x\n\njava -jar /opt/jenkins-slave/swarm-client-SWARM_VERSION-jar-with-dependencies.jar -username $JENKINS_USERNAME -password $JENKINS_PASSWORD -mode normal -name $JENKINS_SLAVE_NAME -executors $JENKINS_EXEC_NR -master $JENKINS_URL -fsroot $JENKINS_FS_ROOT -labels "$JENKINS_SLAVE_LABELS"' > /usr/bin/swarm_slave.sh \
+    && echo '#!/bin/bash -x\n\njava -jar /opt/jenkins-slave/swarm-client-$SWARM_VERSION-jar-with-dependencies.jar -username $JENKINS_USERNAME -password $JENKINS_PASSWORD -mode normal -name $JENKINS_SLAVE_NAME -executors $JENKINS_EXEC_NR -master $JENKINS_URL -fsroot $JENKINS_FS_ROOT -labels "$JENKINS_SLAVE_LABELS"' > /usr/bin/swarm_slave.sh \
     && chmod +x /usr/bin/swarm_slave.sh
 
 # Make sure the package repository is up to date.
