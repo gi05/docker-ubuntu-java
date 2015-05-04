@@ -6,7 +6,7 @@ ENV GRADLE_HOME /usr/share/gradle
 RUN curl -L https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip > /usr/share/gradle-$GRADLE_VERSION-all.zip \
     && unzip /usr/share/gradle-$GRADLE_VERSION-all.zip \
     && ln -s /usr/share/gradle-$GRADLE_VERSION /usr/share/gradle \
-    && rm gradle-$GRADLE_VERSION-all.zip \
+    && rm /usr/share/gradle-$GRADLE_VERSION-all.zip \
     && ln -s /usr/share/gradle/bin/gradle /usr/bin/gradle
 
 USER jenkins-slave
