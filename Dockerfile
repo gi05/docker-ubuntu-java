@@ -4,8 +4,8 @@ MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
 # Java Version
 ENV JAVA_VERSION_MAJOR 8
-ENV JAVA_VERSION_MINOR 31
-ENV JAVA_VERSION_BUILD 13
+ENV JAVA_VERSION_MINOR 45
+ENV JAVA_VERSION_BUILD 14
 ENV JAVA_PACKAGE jdk
 
 # Download and unarchive Java
