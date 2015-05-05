@@ -29,8 +29,8 @@ RUN rm -rf /var/lib/apt/lists/* \
 # add user jenkins-slave
 RUN groupadd -g 998 998 \
     && useradd -u 500 jenkins-slave -U -s /bin/false \
-    && usermod -G 998 jenkins-slave \
-    && usermod -G 999 jenkins-slave \
+    && usermod -a -G 998 jenkins-slave \
+    && usermod -a -G 999 jenkins-slave \
     && chown -R jenkins-slave:jenkins-slave /opt/
 
 ENTRYPOINT ["/usr/bin/swarm_slave.sh"]
