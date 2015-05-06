@@ -1,4 +1,4 @@
-FROM oberthur/jenkins-slave-base:1.6.0_1.22
+FROM oberthur/jenkins-slave-base:1.5.0_1.22
 
 ENV COMPOSE_VERSION 1.2
 

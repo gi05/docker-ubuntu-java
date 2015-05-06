@@ -1,4 +1,4 @@
-FROM oberthur/jenkins-slave-base:1.6.0_1.22
+FROM oberthur/jenkins-slave-base:1.5.0_1.22
 
 # Make sure the package repository is up to date.
 RUN apt-get install -y ansible python-pycurl bsdtar genisoimage && \
