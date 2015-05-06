@@ -1,4 +1,4 @@
-FROM oberthur/jenkins-slave-base:1.6.0_1.24
+FROM oberthur/jenkins-slave-base:1.6.0_1.22
 
 ENV GRADLE_VERSION 2.3
 ENV GRADLE_HOME /usr/share/gradle

@@ -1,11 +1,11 @@
-FROM oberthur/docker-ubuntu-java:jdk8_8.45.14	
+FROM oberthur/docker-ubuntu-java:jdk8_8.40.26
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
 ENV HOME /opt/jenkins-slave
 ENV _JAVA_OPTIONS=-Duser.home=/opt/jenkins-slave
 ENV DOCKER_VERSION 1.6.0
-ENV SWARM_VERSION 1.24
+ENV SWARM_VERSION 1.22
 
 WORKDIR /opt/jenkins-slave
 
