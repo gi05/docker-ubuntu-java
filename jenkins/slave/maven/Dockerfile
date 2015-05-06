@@ -1,4 +1,4 @@
-FROM oberthur/jenkins-slave-base:1.6.0_1.24
+FROM oberthur/jenkins-slave-base:1.5.0_1.23
 
 ENV MAVEN_VERSION 3.2.5
 ENV MAVEN_HOME /usr/share/maven
