@@ -4,7 +4,7 @@ MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
 ENV HOME /opt/jenkins-slave
 ENV _JAVA_OPTIONS=-Duser.home=/opt/jenkins-slave
-ENV DOCKER_VERSION 1.6.0
+ENV DOCKER_VERSION 1.5.0
 ENV SWARM_VERSION 1.22
 
 WORKDIR /opt/jenkins-slave
