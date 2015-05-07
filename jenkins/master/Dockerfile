@@ -1,11 +1,11 @@
-FROM oberthur/docker-ubuntu-java:8.45.14
+FROM oberthur/docker-ubuntu-java:jdk8_8.45.14
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
 RUN wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add - && \
-	sh -c 'echo deb http://pkg.jenkins-ci.org/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list' && \
-	apt-get update && \
-	apt-get install -y jenkins=1.596.2
+    sh -c 'echo deb http://pkg.jenkins-ci.org/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list' && \
+    apt-get update && \
+    apt-get install -y jenkins=1.596.2
 
 # clean all cache to clean space
 RUN rm -rf /var/lib/apt/lists/* && \
