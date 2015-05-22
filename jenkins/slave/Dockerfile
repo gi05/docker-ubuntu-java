@@ -13,22 +13,20 @@ RUN mkdir -p /opt/jenkins-slave \
     && curl -o /opt/jenkins-slave/swarm-client-$SWARM_VERSION-jar-with-dependencies.jar http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/$SWARM_VERSION/swarm-client-$SWARM_VERSION-jar-with-dependencies.jar \
     && echo '#!/bin/bash -x\n\njava -jar /opt/jenkins-slave/swarm-client-$SWARM_VERSION-jar-with-dependencies.jar -username $JENKINS_USERNAME -password $JENKINS_PASSWORD -mode normal -name $JENKINS_SLAVE_NAME -executors $JENKINS_EXEC_NR -master $JENKINS_URL -fsroot $JENKINS_FS_ROOT -labels "$JENKINS_SLAVE_LABELS"' > /usr/bin/swarm_slave.sh \
     && chmod +x /usr/bin/swarm_slave.sh \
-    && echo mkdir /etc/logstash && echo "[program:swarm-slave]\ncommand=/usr/bin/swarm_slave.sh" > /etc/supervisor/conf.d/supervisor.conf
-
-# Make sure the package repository is up to date.
-RUN apt-get update && apt-get install -y apt-transport-https \
+    && mkdir -p /etc/supervisor/conf.d \
+    && echo "[program:swarm-slave]\ncommand=/usr/bin/swarm_slave.sh\nuser=jenkins-slave" > /etc/supervisor/conf.d/supervisor.conf \
+    # Make sure the package repository is up to date.
+    && apt-get update && apt-get install -y apt-transport-https \
     && echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9 \
     && apt-get update \
-    && apt-get install -y lxc-docker-$DOCKER_VERSION git supervisor
-
-# clean all cache to clean space
-RUN rm -rf /var/lib/apt/lists/* \
+    && apt-get install -y lxc-docker-$DOCKER_VERSION git supervisor \
+    # clean all cache to clean space
+    && rm -rf /var/lib/apt/lists/* \
     && apt-get clean \
-    && apt-get -y autoremove
-
-# add user jenkins-slave
-RUN groupadd -g 998 998 \
+    && apt-get -y autoremove \
+    # add user jenkins-slave
+    && groupadd -g 998 998 \
     && useradd -u 500 jenkins-slave -U -s /bin/false \
     && usermod -a -G 998 jenkins-slave \
     && usermod -a -G 999 jenkins-slave \
