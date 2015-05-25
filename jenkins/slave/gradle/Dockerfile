@@ -8,5 +8,3 @@ RUN curl -L https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all
     && ln -s /usr/share/gradle-$GRADLE_VERSION /usr/share/gradle \
     && rm /usr/share/gradle-$GRADLE_VERSION-all.zip \
     && ln -s /usr/share/gradle/bin/gradle /usr/bin/gradle
-
-USER jenkins-slave
