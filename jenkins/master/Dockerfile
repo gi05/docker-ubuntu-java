@@ -12,6 +12,6 @@ RUN wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean \
     && echo '#!/bin/bash -x\n\njava -Djava.awt.headless=true -DJENKINS_HOME=/var/lib/jenkins -jar /usr/share/jenkins/jenkins.war --logfile=/var/log/jenkins/jenkins.log --webroot=/var/cache/jenkins/war --httpPort=8080 --prefix=/jenkins' > /usr/bin/jenins_master.sh \
-    && echo "[program:swarm-slave]\ncommand=/usr/bin/jenins_master.sh\nuser=jenkins-slave" > /etc/supervisor/conf.d/supervisor.conf
+    && echo "[program:swarm-slave]\ncommand=/usr/bin/jenins_master.sh\nuser=jenkins" > /etc/supervisor/conf.d/supervisor.conf
 
 ENTRYPOINT [ "/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf" ]
