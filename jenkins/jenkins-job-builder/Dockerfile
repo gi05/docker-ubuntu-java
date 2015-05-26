@@ -9,7 +9,9 @@ RUN apt-get update \
 
 RUN easy_install pip \
     && pip install PyYAML \
-    && pip install pbr
+    && pip install pbr \
+    && pip install six \
+    && pip install python-jenkins
 
 RUN git clone https://github.com/oberthur/jenkins-job-builder.git \
     && cd jenkins-job-builder \
