@@ -15,7 +15,7 @@ RUN easy_install pip \
 RUN git clone https://github.com/oberthur/python-jenkins \
     && cd python-jenkins \
     && git checkout develop \
-    && python setup.py instal
+    && python setup.py install
 
 RUN git clone https://github.com/oberthur/jenkins-job-builder.git \
     && cd jenkins-job-builder \
