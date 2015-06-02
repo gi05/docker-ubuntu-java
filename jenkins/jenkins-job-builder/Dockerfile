@@ -9,7 +9,7 @@ RUN apt-get update \
 
 RUN easy_install pip \
     && pip install PyYAML \
-    && pip install pbr \
+    && pip install -Iv https://pypi.python.org/packages/source/p/pbr/pbr-0.9.0.tar.gz \
     && pip install six
 
 RUN git clone https://github.com/oberthur/python-jenkins \
