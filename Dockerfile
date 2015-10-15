@@ -1,15 +1,14 @@
-FROM otechlabs/base:latest
+FROM oberthur/docker-ubuntu:14.04.3
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
 # Java Version
-ENV JAVA_VERSION_MAJOR 8
-ENV JAVA_VERSION_MINOR 51
-ENV JAVA_VERSION_BUILD 16
-ENV JAVA_PACKAGE jdk
-# Set environment
-ENV JAVA_HOME /opt/jdk
-ENV PATH ${PATH}:${JAVA_HOME}/bin
+ENV JAVA_VERSION_MAJOR=8 \
+    JAVA_VERSION_MINOR=60 \
+    JAVA_VERSION_BUILD=27 \
+    JAVA_PACKAGE=jdk \
+    JAVA_HOME=/opt/jdk \
+    PATH=${PATH}:/opt/jdk/bin
 
 # Download and unarchive Java
 RUN curl -kLOH "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" \
@@ -41,6 +40,10 @@ RUN curl -kLOH "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=ac
     && mkdir -p /opt/jdk/jre/lib/security \
     # Download Java Cryptography Extension
     && curl -s -k -L -C - -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jce/${JAVA_VERSION_MAJOR}/jce_policy-${JAVA_VERSION_MAJOR}.zip > /tmp/jce_policy-${JAVA_VERSION_MAJOR}.zip \
+    && apt-get update && apt-get install unzip \
     && unzip -d /tmp/ /tmp/jce_policy-${JAVA_VERSION_MAJOR}.zip \
     && yes |cp -v /tmp/UnlimitedJCEPolicyJDK${JAVA_VERSION_MAJOR}/*.jar /opt/jdk/jre/lib/security/ \
-    && rm -fr /tmp/*
+    && rm -fr /tmp/* \
+    && apt-get purge unzip \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
