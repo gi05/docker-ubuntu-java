@@ -4,8 +4,8 @@ MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
 # Java Version
 ENV JAVA_VERSION_MAJOR=8 \
-    JAVA_VERSION_MINOR=60 \
-    JAVA_VERSION_BUILD=27 \
+    JAVA_VERSION_MINOR=65 \
+    JAVA_VERSION_BUILD=17 \
     JAVA_PACKAGE=jdk \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin
