@@ -1,4 +1,4 @@
-FROM oberthur/docker-ubuntu:14.04.3
+FROM oberthur/docker-ubuntu:14.04.4
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
