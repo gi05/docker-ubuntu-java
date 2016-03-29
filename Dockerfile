@@ -1,10 +1,10 @@
-FROM oberthur/docker-ubuntu:14.04.3
+FROM oberthur/docker-ubuntu:14.04.4
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
 # Java Version
 ENV JAVA_VERSION_MAJOR=7 \
-    JAVA_VERSION_MINOR=79 \
+    JAVA_VERSION_MINOR=80 \
     JAVA_VERSION_BUILD=15 \
     JAVA_PACKAGE=jdk \
     JAVA_HOME=/opt/jdk \
