@@ -25,7 +25,6 @@ RUN curl -kLOH "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=ac
            /opt/jdk/lib/visualvm \
            /opt/jdk/lib/*javafx* \
            /opt/jdk/jre/lib/plugin.jar \
-           /opt/jdk/jre/lib/ext/jfxrt.jar \
            /opt/jdk/jre/bin/javaws \
            /opt/jdk/jre/lib/javaws.jar \
            /opt/jdk/jre/lib/desktop \
