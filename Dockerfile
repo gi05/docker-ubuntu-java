@@ -49,3 +49,10 @@ RUN curl -kLOH "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=ac
     && apt-get purge unzip \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
+    
+# Add user app
+RUN groupadd -g 499 app \
+    && useradd -u 499 app -g app -s /bin/false -M -d /opt/app \
+    && mkdir -p /opt/app/logs/archives \
+    && chown -R app:app /opt/app   
+    
