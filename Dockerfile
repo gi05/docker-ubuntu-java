@@ -47,9 +47,10 @@ RUN curl -kLOH "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=ac
     && yes |cp -v /tmp/UnlimitedJCEPolicyJDK${JAVA_VERSION_MAJOR}/*.jar /opt/jdk/jre/lib/security/ \
     && rm -fr /tmp/* \
     && apt-get purge unzip \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-    
+    && apt-get clean autoclean \
+    && apt-get autoremove --yes \
+    && rm -rf /var/lib/{apt,dpkg,cache,log}/
+
 # Add user app
 RUN groupadd -g 499 app \
     && useradd -u 499 app -g app -s /bin/false -M -d /opt/app \
