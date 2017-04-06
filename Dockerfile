@@ -21,7 +21,7 @@ RUN curl -kLOH "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=ac
     && rm ${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar \
     && ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk \
     && mkdir -p /opt/jdk/jre/lib/security \
-    # Download Java Cryptography Extension
+# Download Java Cryptography Extension
     && curl -s -k -L -C - -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jce/${JAVA_VERSION_MAJOR}/jce_policy-${JAVA_VERSION_MAJOR}.zip > /tmp/jce_policy-${JAVA_VERSION_MAJOR}.zip \
     && apt-get update && apt-get install unzip \
     && unzip -d /tmp/ /tmp/jce_policy-${JAVA_VERSION_MAJOR}.zip \
@@ -36,5 +36,16 @@ RUN curl -kLOH "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=ac
 RUN groupadd -g 499 app \
     && useradd -u 499 app -g app -s /bin/false -M -d /opt/app \
     && mkdir -p /opt/app/logs/archives \
-    && chown -R app:app /opt/app   
-    
+    && chown -R app:app /opt/app \
+
+# clean up
+    && apt-get clean autoclean \
+    && apt-get autoremove --yes \
+    && rm -rf /var/lib/{apt,dpkg,cache,log}/ \
+    && rm -fr /tmp/* /var/tmp/*  
+
+# cleaning docs
+ONBUILD RUN rm -rf /usr/share/doc/* \
+  && rm -rf /usr/share/doc/*/copyright \
+  && rm -rf /usr/share/man/* \
+  && rm -rf /usr/share/info/*     
