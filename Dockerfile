@@ -55,5 +55,16 @@ RUN curl -kLOH "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=ac
 RUN groupadd -g 499 app \
     && useradd -u 499 app -g app -s /bin/false -M -d /opt/app \
     && mkdir -p /opt/app/logs/archives \
-    && chown -R app:app /opt/app   
+    && chown -R app:app /opt/app \  
     
+# clean up
+    && apt-get clean autoclean \
+    && apt-get autoremove --yes \
+    && rm -rf /var/lib/{apt,dpkg,cache,log}/ \
+    && rm -fr /tmp/* /var/tmp/*  
+
+# cleaning docs
+ONBUILD RUN rm -rf /usr/share/doc/* \
+  && rm -rf /usr/share/doc/*/copyright \
+  && rm -rf /usr/share/man/* \
+  && rm -rf /usr/share/info/* 
