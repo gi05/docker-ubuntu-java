@@ -6,8 +6,8 @@ MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 ENV JAVA_VERSION_MAJOR=8 \
     JAVA_VERSION_MINOR=131 \
     JAVA_VERSION_BUILD=11 \
-    JAVA_PACKAGE=openjdk-8-jdk
-    JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 \
+    JAVA_PACKAGE=openjdk-8-jdk \
+    JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # Add label
 LABEL TYPE="JAVA"
