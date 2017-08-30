@@ -13,7 +13,7 @@ ENV JAVA_VERSION_MAJOR=8 \
 LABEL TYPE="JAVA"
 
 # Download and unarchive Java
-RUN apt-get update && apt-get install -y ${JAVA_PACKAGE}=${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}-0ubuntu1.16.04.2 \
+RUN apt-get update && apt-get install -y ${JAVA_PACKAGE}=${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}-2ubuntu1.16.04.3 \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
